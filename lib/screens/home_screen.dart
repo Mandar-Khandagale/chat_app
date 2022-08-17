@@ -4,7 +4,7 @@ import 'package:flutter_chat_app/pages/contact_page.dart';
 import 'package:flutter_chat_app/pages/message_page.dart';
 import 'package:flutter_chat_app/pages/notification_page.dart';
 import 'package:flutter_chat_app/pages/widget/bottom_navigation_bar.dart';
-import 'package:flutter_chat_app/utils/themes.dart';
+import 'package:flutter_chat_app/pages/widget/icon_button.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -34,7 +34,10 @@ class HomeScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ));
             }),
-        leading: const Icon(Icons.search),
+        leading: CustomIconButton(
+          icon: Icons.search,
+          onTap: () {},
+        ),
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 20.0),
