@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/helpers.dart';
 import 'package:flutter_chat_app/pages/calls_page.dart';
 import 'package:flutter_chat_app/pages/contact_page.dart';
 import 'package:flutter_chat_app/pages/message_page.dart';
 import 'package:flutter_chat_app/pages/notification_page.dart';
 import 'package:flutter_chat_app/pages/widget/bottom_navigation_bar.dart';
+import 'package:flutter_chat_app/pages/widget/circle_avatar.dart';
 import 'package:flutter_chat_app/pages/widget/icon_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -38,12 +40,10 @@ class HomeScreen extends StatelessWidget {
           icon: Icons.search,
           onTap: () {},
         ),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 20.0),
-            child: CircleAvatar(
-              child: Icon(Icons.person),
-            ),
+            padding: const EdgeInsets.only(right: 20.0),
+            child: CustomCircleAvatar.small(url: Helper.randomImagesUrl()),
           ),
         ],
       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/pages/widget/action_button.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -45,6 +47,14 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             isSelected: (selectedItem == 1),
             onTap: handleSelectedItem,
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: ActionButton(
+              color: AppColors.secondary,
+              icon: CupertinoIcons.add,
+              onTap: () {},
+            ),
+          ),
           NavigationBarItems(
             index: 2,
             icon: CupertinoIcons.phone_fill,
@@ -83,31 +93,34 @@ class NavigationBarItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        onTap(index);
-      },
-      child: SizedBox(
-        height: 50.0,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              icon,
-              color: isSelected ? AppColors.secondary : null,
-            ),
-            const SizedBox(height: 5.0,),
-            Text(
-              label,
-              style: isSelected
-                  ? const TextStyle(
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.secondary)
-                  : const TextStyle(fontSize: 14.0),
-            ),
-          ],
+    return Expanded(
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          onTap(index);
+        },
+        child: SizedBox(
+          width: 60.0,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                color: isSelected ? AppColors.secondary : null,
+              ),
+              const SizedBox(height: 5.0,),
+              Text(
+                label,
+                style: isSelected
+                    ? const TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.secondary)
+                    : const TextStyle(fontSize: 14.0),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ),
     );
