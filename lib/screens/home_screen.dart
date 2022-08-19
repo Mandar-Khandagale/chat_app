@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/helpers.dart';
 import 'package:flutter_chat_app/pages/calls_page.dart';
@@ -36,9 +37,13 @@ class HomeScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ));
             }),
-        leading: CustomIconButton(
-          icon: Icons.search,
-          onTap: () {},
+        leadingWidth: 54,
+        leading: Align(
+          alignment: Alignment.centerRight,
+          child: CustomIconButton(
+            icon: CupertinoIcons.search,
+            onTap: () {},
+          ),
         ),
         actions: [
           Padding(

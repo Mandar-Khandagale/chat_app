@@ -2,6 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/helpers.dart';
 import 'package:flutter_chat_app/pages/widget/circle_avatar.dart';
+import 'package:flutter_chat_app/screens/imports.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
 
 class MessagePage extends StatelessWidget {
@@ -37,6 +38,9 @@ class MessageCard extends StatelessWidget {
       itemBuilder: (context, index) {
         final data = Faker();
         return ListTile(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> const ChatScreen()));
+          },
           leading: CustomCircleAvatar.large(url: Helper.randomImagesUrl()),
           title: Text(data.person.firstName(),
               style: const TextStyle(
@@ -46,6 +50,7 @@ class MessageCard extends StatelessWidget {
           subtitle: Text(data.address.streetAddress(),
               style: const TextStyle(
                 fontSize: 14.0,
+                color: AppColors.textFaded,
               )),
           trailing: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -56,6 +61,7 @@ class MessageCard extends StatelessWidget {
                     fontSize: 14.0,
                   )),
               Container(
+                margin: const EdgeInsets.only(top: 10.0),
                 height: 18,
                 width: 18,
                 decoration: const BoxDecoration(
