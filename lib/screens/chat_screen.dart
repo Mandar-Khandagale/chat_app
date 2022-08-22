@@ -20,24 +20,7 @@ class ChatScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      padding: const EdgeInsets.all(10.0),
-                      margin: const EdgeInsets.only(top: 10.0),
-                      decoration: BoxDecoration(
-                        borderRadius: const  BorderRadius.all(Radius.circular(15.0)),
-                        color: Theme.of(context).cardColor,
-                      ),
-                      child: const Text(
-                        "Yesterday",
-                        style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                            overflow: TextOverflow.ellipsis),
-                      ),
-                    ),
-                  ),
+                  dateDayWidget(context),
                   const SizedBox(height: 25.0),
                   const ReceivedMessage(message: "Hello", date: "12-1-2022",),
                   const SentMessage(message: "Hi....", date: "12-1-2022",),
@@ -56,6 +39,27 @@ class ChatScreen extends StatelessWidget {
         ),
       ),
 
+    );
+  }
+
+  Align dateDayWidget(BuildContext context) {
+    return Align(
+      alignment: Alignment.center,
+      child: Container(
+        padding: const EdgeInsets.all(10.0),
+        margin: const EdgeInsets.only(top: 10.0),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+          color: Theme.of(context).cardColor,
+        ),
+        child: const Text(
+          "Yesterday",
+          style: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.bold,
+              overflow: TextOverflow.ellipsis),
+        ),
+      ),
     );
   }
 
@@ -166,7 +170,7 @@ class BottomTextWidget extends StatelessWidget {
             ActionButton(
               color: AppColors.red,
               onTap: (){},
-              icon: Icons.send,
+              icon: Icons.send_rounded,
             ),
           ],
         ),

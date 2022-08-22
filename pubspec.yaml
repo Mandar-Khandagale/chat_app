@@ -32,6 +32,7 @@ dependencies:
   google_fonts: ^3.0.1
   cached_network_image: ^3.2.1
   faker:
+  stream_chat_flutter_core: ^4.4.1
 
 
   # The following adds the Cupertino Icons font to your application.
