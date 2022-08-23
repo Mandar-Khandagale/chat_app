@@ -23,7 +23,10 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return StreamChatCore(
             client: client,
-            child: child!);
+          child: ChannelsBloc(
+            child: UsersBloc(child: child!),
+          ),
+        );
       },
       home: const UserSelectionScreen(),
     );

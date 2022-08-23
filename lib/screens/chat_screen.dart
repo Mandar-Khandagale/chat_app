@@ -1,18 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/helpers.dart';
 import 'package:flutter_chat_app/pages/widget/action_button.dart';
 import 'package:flutter_chat_app/pages/widget/circle_avatar.dart';
 import 'package:flutter_chat_app/pages/widget/icon_button.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final channel = StreamChannel.of(context).channel;
     return Scaffold(
-      appBar: _buildAppBar(context),
+      appBar: _buildAppBar(context,channel),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Column(
@@ -63,7 +66,7 @@ class ChatScreen extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar(BuildContext context) {
+  AppBar _buildAppBar(BuildContext context, Channel channel) {
     return AppBar(
       leadingWidth: 54,
       leading: Align(
@@ -77,19 +80,19 @@ class ChatScreen extends StatelessWidget {
       ),
       title: Row(
         children: [
-          CustomCircleAvatar.small(url: Helper.randomImagesUrl()),
+          CustomCircleAvatar.small(url: Helper.getChannelImage(channel, context.getCurrentUser!)),
           Padding(
             padding: const EdgeInsets.only(left: 15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text("Mandar Khandagale",
-                    style:  TextStyle(
+              children: [
+                Text(Helper.getChannelName(channel, context.getCurrentUser!)!,
+                    style:  const TextStyle(
                       fontSize: 14.0,
                       fontWeight: FontWeight.bold,
                       overflow: TextOverflow.ellipsis
                     )),
-                Text("Online now",
+                const Text("Online now",
                     style: TextStyle(
                       fontSize: 10.0,
                       color: AppColors.green,

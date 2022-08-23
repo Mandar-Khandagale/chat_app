@@ -15,11 +15,13 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 54,
-        leading: CustomIconButton(
-          icon: CupertinoIcons.back,
-          onTap: () {
-            Navigator.pop(context);
-          },
+        leading: Center(
+          child: CustomIconButton(
+            icon: CupertinoIcons.back,
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
       ),
       body: Column(
