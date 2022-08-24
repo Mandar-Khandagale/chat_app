@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 void main() {
   final client = StreamChatClient(streamKey);
-  runApp(MyApp(client: client,));
+  runApp(MyApp(
+    client: client,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,16 +18,18 @@ class MyApp extends StatelessWidget {
   final StreamChatClient client;
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme().light,
       darkTheme: AppTheme().dark,
       themeMode: ThemeMode.light,
       builder: (context, child) {
         return StreamChatCore(
-            client: client,
+          client: client,
           child: ChannelsBloc(
-            child: UsersBloc(child: child!),
+            child: UsersBloc(
+              child: StreamChat(client: client, child: child!),
+            ),
           ),
         );
       },
@@ -32,4 +37,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

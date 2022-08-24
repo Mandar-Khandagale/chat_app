@@ -7,6 +7,7 @@ import 'package:flutter_chat_app/pages/widget/error_widget.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class MessagePage extends StatelessWidget {
