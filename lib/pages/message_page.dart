@@ -4,11 +4,10 @@ import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/helpers.dart';
 import 'package:flutter_chat_app/pages/widget/circle_avatar.dart';
 import 'package:flutter_chat_app/pages/widget/error_widget.dart';
+import 'package:flutter_chat_app/pages/widget/unread_indicator_widget.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
-import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class MessagePage extends StatelessWidget {
   const MessagePage({Key? key}) : super(key: key);
@@ -98,15 +97,11 @@ class MessageCard extends StatelessWidget {
             height: 18,
             width: 18,
             decoration: const BoxDecoration(
-              color: AppColors.secondary,
+              color: Colors.transparent,
               shape: BoxShape.circle,
             ),
-            child: const Center(
-              child:  Text("1",
-                  style: TextStyle(
-                    fontSize: 10.0,
-                    color: AppColors.textLigth,
-                  )),
+            child:  Center(
+              child:  UnReadIndicator(channel: channel,),
             ),
           ),
         ],
@@ -148,15 +143,21 @@ class MessageCard extends StatelessWidget {
   }
 
   _buildLastMsgWidget() {
-    return BetterStreamBuilder<Message>(
-      stream: channel.state!.lastMessageStream,
-      initialData: channel.state!.lastMessage,
-      builder: (context, message) {
-        return Text(message.text ?? "-",
-            style: const TextStyle(
-              fontSize: 14.0,
-              color: AppColors.textFaded,
-            ));
+    return BetterStreamBuilder<int>(
+      stream: channel.state!.unreadCountStream,
+      initialData: channel.state?.unreadCount ?? 0,
+      builder: (context, count) {
+        return BetterStreamBuilder<Message>(
+          stream: channel.state!.lastMessageStream,
+          initialData: channel.state!.lastMessage,
+          builder: (context, message) {
+            return Text(message.text ?? "-",
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: count > 0 ? AppColors.secondary : AppColors.textFaded,
+                ));
+          }
+        );
       }
     );
   }

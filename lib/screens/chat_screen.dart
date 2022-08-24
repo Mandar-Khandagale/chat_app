@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,34 @@ import 'package:flutter_chat_app/screens/widgets/sent_message.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+
+  late StreamSubscription<int> unreadCountSubscription;
+
+  @override
+  void initState() {
+    unreadCountSubscription = StreamChannel.of(context).channel.state!.unreadCountStream.listen(unreadCount);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    unreadCountSubscription.cancel();
+    super.dispose();
+  }
+
+  Future<void> unreadCount(int count) async{
+    if(count > 0){
+      await StreamChannel.of(context).channel.markRead();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +92,6 @@ class ChatScreen extends StatelessWidget {
 
     );
   }
-
 
   AppBar _buildAppBar(BuildContext context, Channel channel) {
     return AppBar(
