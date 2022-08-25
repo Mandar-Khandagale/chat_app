@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
           child: CustomIconButton(
             icon: CupertinoIcons.back,
             onTap: () {
-              Navigator.pop(context);
+              Get.back();
             },
           ),
         ),
@@ -83,7 +83,7 @@ class ProfileScreen extends StatelessWidget {
               onPressed: () {
                 final client = StreamChatCore.of(context).client;
                 client.disconnectUser();
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const UserSelectionScreen()));
+                Get.to(() => const UserSelectionScreen());
               },
               child: const Text(
                 "Sign-Out",

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/pages/widget/error_widget.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
+import 'package:get/get.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class ContactPage extends StatelessWidget {
@@ -90,13 +91,9 @@ class ContactPage extends StatelessWidget {
     await channel.watch();
 
     if(isFromDialog){
-      Navigator.pop(context);
+      Get.back();
     }
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                StreamChannel(channel: channel, child: const ChatScreen())));
+    Get.to(() => StreamChannel(channel: channel, child: const ChatScreen()));
   }
 
 }

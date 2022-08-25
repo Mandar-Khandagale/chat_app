@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/models/user_data_model.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
+import 'package:get/get.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class UserSelectionScreen extends StatelessWidget {
@@ -35,7 +36,7 @@ class UserSelectionScreen extends StatelessWidget {
                     }),
                     client.devToken(users[index].id).rawValue,
                   );
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                  Get.to(() => HomeScreen());
                 } catch(e) {
                   print(e);
                 }

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
@@ -14,6 +13,8 @@ import 'package:flutter_chat_app/screens/widgets/date_label_widget.dart';
 import 'package:flutter_chat_app/screens/widgets/received_message.dart';
 import 'package:flutter_chat_app/screens/widgets/sent_message.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
+import 'package:get/route_manager.dart';
+import 'package:get/utils.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -103,7 +104,7 @@ class _ChatScreenState extends State<ChatScreen> {
         child: CustomIconButton(
           icon: CupertinoIcons.back,
           onTap: () {
-            Navigator.pop(context);
+            Get.back();
           },
         ),
       ),

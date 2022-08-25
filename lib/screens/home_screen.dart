@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
-import 'package:flutter_chat_app/helpers.dart';
 import 'package:flutter_chat_app/pages/calls_page.dart';
 import 'package:flutter_chat_app/pages/contact_page.dart';
 import 'package:flutter_chat_app/pages/message_page.dart';
@@ -10,6 +9,7 @@ import 'package:flutter_chat_app/pages/widget/bottom_navigation_bar.dart';
 import 'package:flutter_chat_app/pages/widget/circle_avatar.dart';
 import 'package:flutter_chat_app/pages/widget/icon_button.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -55,10 +55,7 @@ class HomeScreen extends StatelessWidget {
               child: CustomCircleAvatar.small(
                 url: context.getUserImage ?? "",
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProfileScreen()));
+                   Get.to(ProfileScreen());
                 },
               ),
             ),

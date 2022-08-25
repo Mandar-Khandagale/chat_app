@@ -7,6 +7,7 @@ import 'package:flutter_chat_app/pages/widget/error_widget.dart';
 import 'package:flutter_chat_app/pages/widget/unread_indicator_widget.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
+import 'package:get/route_manager.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class MessagePage extends StatelessWidget {
@@ -79,11 +80,9 @@ class MessageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => StreamChannel(
-                    channel: channel, child: const ChatScreen())));
+        Get.to(() =>
+          StreamChannel(channel: channel,child: const ChatScreen())
+        );
       },
       leading: CustomCircleAvatar.large(url: Helper.getChannelImage(channel, context.getCurrentUser!)),
       title: Text(Helper.getChannelName(channel, context.getCurrentUser!) ?? "-",
