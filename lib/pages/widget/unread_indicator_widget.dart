@@ -19,11 +19,13 @@ class UnReadIndicator extends StatelessWidget {
           return Material(
             borderRadius: BorderRadius.circular(8.0),
             color: AppColors.secondary,
-            child: Text('${data > 99 ? "99+" : data}',
-                style: const TextStyle(
-                  fontSize: 10.0,
-                  color: AppColors.textLigth,
-                )),
+            child: CircleAvatar(
+              child: Text('${data > 99 ? "99+" : data}',
+                  style: const TextStyle(
+                    fontSize: 10.0,
+                    color: AppColors.textLigth,
+                  )),
+            ),
           );
         }
       },

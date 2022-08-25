@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/pages/contact_page.dart';
 import 'package:flutter_chat_app/pages/widget/action_button.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
 
@@ -52,7 +53,25 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             child: ActionButton(
               color: AppColors.secondary,
               icon: CupertinoIcons.add,
-              onTap: () {},
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return Dialog(
+                      shape:  const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      ),
+                      child: SizedBox(
+                       height: MediaQuery.of(context).size.height / 3,
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: ContactPage(isFromDialog: true,),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
             ),
           ),
           NavigationBarItems(

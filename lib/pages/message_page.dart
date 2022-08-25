@@ -53,7 +53,12 @@ class MessagePage extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, index) {
-                    return const SizedBox(height: 20.0,);
+                    return const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child:  Divider(
+                        thickness: 1.0,
+                      ),
+                    );
                   },
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_chat_app/pages/widget/circle_avatar.dart';
 import 'package:flutter_chat_app/pages/widget/error_widget.dart';
 import 'package:flutter_chat_app/pages/widget/icon_button.dart';
 import 'package:flutter_chat_app/screens/widgets/bottom_action_widget.dart';
+import 'package:flutter_chat_app/screens/widgets/custom_typing_indicator.dart';
 import 'package:flutter_chat_app/screens/widgets/date_label_widget.dart';
 import 'package:flutter_chat_app/screens/widgets/received_message.dart';
 import 'package:flutter_chat_app/screens/widgets/sent_message.dart';
@@ -113,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(Helper.getChannelName(channel, context.getCurrentUser!)!,
+                Text(Helper.getChannelName(channel, context.getCurrentUser!) ?? "-",
                     style:  const TextStyle(
                       fontSize: 14.0,
                       fontWeight: FontWeight.bold,
@@ -214,7 +216,7 @@ class _ChatScreenState extends State<ChatScreen> {
         }
       }
     }
-    return TypingIndicator(
+    return CustomTypingIndicator(
       alternativeWidget: displayWidget,
     );
   }
@@ -243,7 +245,7 @@ class MessagesList extends StatelessWidget {
           final messages = message[index];
           final nextMessage = message[index + 1];
 
-          if(!Jiffy(messages.createdAt.toLocal()).isSame(nextMessage.createdAt.toLocal())) {
+          if(!Jiffy(messages.createdAt.toLocal()).isSame(nextMessage.createdAt.toLocal(), Units.DAY)) {
             return DateLabel(dateTime: message[index].createdAt,);
           }else {
             return const SizedBox.shrink();

@@ -15,7 +15,8 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 54,
-        leading: Center(
+        leading: Align(
+          alignment: Alignment.centerRight,
           child: CustomIconButton(
             icon: CupertinoIcons.back,
             onTap: () {

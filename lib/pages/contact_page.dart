@@ -5,7 +5,9 @@ import 'package:flutter_chat_app/screens/imports.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class ContactPage extends StatelessWidget {
-  const ContactPage({Key? key}) : super(key: key);
+  const ContactPage({Key? key, this.isFromDialog = false}) : super(key: key);
+
+  final bool isFromDialog;
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +89,9 @@ class ContactPage extends StatelessWidget {
 
     await channel.watch();
 
+    if(isFromDialog){
+      Navigator.pop(context);
+    }
     Navigator.push(
         context,
         MaterialPageRoute(

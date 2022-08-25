@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomCircleAvatar extends StatelessWidget {
@@ -46,15 +45,29 @@ class CustomCircleAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: url != null ? CircleAvatar(
-        radius: radius,
-        backgroundColor: Theme.of(context).cardColor,
-        backgroundImage: CachedNetworkImageProvider(url!),
-      ) : CircleAvatar(
-        radius: radius,
-        backgroundColor: Theme.of(context).cardColor,
-        child: const Center(child:  FlutterLogo(),),
-      ),
+      child: url != null
+          ? CircleAvatar(
+              radius: radius,
+              backgroundColor: Theme.of(context).cardColor,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(radius),
+                child: Image.network(
+                  url!,
+                  errorBuilder: (context, obj, _) {
+                    return const Center(
+                      child: FlutterLogo(),
+                    );
+                  },
+                ),
+              ),
+            )
+          : CircleAvatar(
+              radius: radius,
+              backgroundColor: Theme.of(context).cardColor,
+              child: const Center(
+                child: FlutterLogo(),
+              ),
+            ),
     );
   }
 }
