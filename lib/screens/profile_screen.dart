@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
+import 'package:flutter_chat_app/controllers/profile_screen_controller.dart';
 import 'package:flutter_chat_app/pages/widget/circle_avatar.dart';
 import 'package:flutter_chat_app/pages/widget/icon_button.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
+import 'package:get/get.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+   ProfileScreen({Key? key}) : super(key: key);
+
+  final controller = Get.put(ProfileScreenController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,28 @@ class ProfileScreen extends StatelessWidget {
             },
           ),
         ),
+        actions: [
+          GetBuilder<ProfileScreenController>(builder: (_) {
+            return Padding(
+              padding: const EdgeInsets.only(right: 18.0),
+              child: Align(
+                alignment: Alignment.center,
+                child: CustomIconButton(
+                  icon: controller.isThemeChanged
+                      ? Icons.light_mode_outlined
+                      : Icons.dark_mode_outlined,
+                  onTap: () {
+                    if (controller.isThemeChanged) {
+                      controller.changeTheme(false);
+                    } else {
+                      controller.changeTheme(true);
+                    }
+                  },
+                ),
+              ),
+            );
+          }),
+        ],
       ),
       body: Column(
         children: [
@@ -45,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
                    style: const TextStyle(
                        fontSize: 20.0,
                        fontWeight: FontWeight.bold,
-                       color: Colors.black),
+                   ),
                  ),
                ],
              ),
