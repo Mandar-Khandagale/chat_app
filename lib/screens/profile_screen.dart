@@ -11,7 +11,7 @@ import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 class ProfileScreen extends StatelessWidget {
    ProfileScreen({Key? key}) : super(key: key);
 
-  final controller = Get.put(ProfileScreenController());
+   final controller = Get.find<ProfileScreenController>();
 
   @override
   Widget build(BuildContext context) {

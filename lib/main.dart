@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
+import 'package:flutter_chat_app/di/di.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
 import 'package:get/get.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
-import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 void main() {
+  init();
   final client = StreamChatClient(streamKey);
   runApp(MyApp(
     client: client,
