@@ -7,7 +7,11 @@ import 'package:get/get.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 void main() {
+
+  ///added dependency injection to connect with controller
   init();
+
+  /// get your stream key and initialized StreamChatClient
   final client = StreamChatClient(streamKey);
   runApp(MyApp(
     client: client,
@@ -26,6 +30,8 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme().dark,
       themeMode: ThemeMode.light,
       builder: (context, child) {
+
+        ///Wrap with StreamChatCore to get access of client in all ancestors
         return StreamChatCore(
           client: client,
           child: ChannelsBloc(
@@ -35,7 +41,7 @@ class MyApp extends StatelessWidget {
           ),
         );
       },
-      home: const UserSelectionScreen(),
+      home: UserSelectionScreen(),
     );
   }
 }

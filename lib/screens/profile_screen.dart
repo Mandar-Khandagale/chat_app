@@ -83,7 +83,7 @@ class ProfileScreen extends StatelessWidget {
               onPressed: () {
                 final client = StreamChatCore.of(context).client;
                 client.disconnectUser();
-                Get.to(() => const UserSelectionScreen());
+                Get.to(() => UserSelectionScreen());
               },
               child: const Text(
                 "Sign-Out",

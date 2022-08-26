@@ -15,6 +15,8 @@ class MessagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    ///Wrapped with ChannelListCore to get the list of all channels
     return ChannelListCore(
       filter: Filter.and([
         Filter.equal("type", "messaging"),

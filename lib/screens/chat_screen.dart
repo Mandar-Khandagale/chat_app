@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
@@ -55,6 +54,8 @@ class _ChatScreenState extends State<ChatScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Column(
           children: [
+
+            ///MessageListCore is used to get the list of all previous messages from the stream
             Expanded(
               child: MessageListCore(
                 loadingBuilder: (context) {
@@ -72,23 +73,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   return MessagesList(message: messages,);
                 },
               ),
-              // ListView(
-              //   children: [
-              //     dateDayWidget(context),
-              //     const SizedBox(height: 25.0),
-              //     const ReceivedMessage(message: "Hello", date: "12-1-2022",),
-              //     const SentMessage(message: "Hi....", date: "12-1-2022",),
-              //     const ReceivedMessage(message: "Whats up?", date: "12-1-2022",),
-              //     const SentMessage(message: "Nothing much", date: "12-1-2022",),
-              //     const SentMessage(message: "What about you.. hows going on", date: "12-1-2022",),
-              //     const ReceivedMessage(message: "Good Going ", date: "12-1-2022",),
-              //     const ReceivedMessage(message: "Can meet?", date: "12-1-2022",),
-              //     const SentMessage(message: "yes sure", date: "12-1-2022",),
-              //     const SentMessage(message: "send place and time", date: "12-1-2022",),
-              //   ],
-              // ),
             ),
-            const BottomTextWidget(),
+            BottomTextWidget(),
           ],
         ),
       ),

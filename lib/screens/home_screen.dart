@@ -17,10 +17,10 @@ class HomeScreen extends StatelessWidget {
   final ValueNotifier<int> pageIndex = ValueNotifier(0);
   final ValueNotifier<String> title = ValueNotifier("Messages");
 
-  final pages = const [
-    MessagePage(),
-    NotificationPage(),
-    CallsPage(),
+  final pages = [
+    const MessagePage(),
+    const NotificationPage(),
+    const CallsPage(),
     ContactPage(),
   ];
 
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
               child: CustomCircleAvatar.small(
                 url: context.getUserImage ?? "",
                 onTap: () {
-                   Get.to(ProfileScreen());
+                   Get.to(() => ProfileScreen());
                 },
               ),
             ),

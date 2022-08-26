@@ -63,8 +63,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                       ),
                       child: SizedBox(
                        height: MediaQuery.of(context).size.height / 3,
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
+                        child:  Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: ContactPage(isFromDialog: true,),
                         ),
                       ),

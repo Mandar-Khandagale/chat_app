@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
+import 'package:flutter_chat_app/controllers/contact_page_controller.dart';
 import 'package:flutter_chat_app/pages/widget/error_widget.dart';
-import 'package:flutter_chat_app/screens/imports.dart';
 import 'package:get/get.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 class ContactPage extends StatelessWidget {
-  const ContactPage({Key? key, this.isFromDialog = false}) : super(key: key);
+  ContactPage({Key? key, this.isFromDialog = false}) : super(key: key);
 
   final bool isFromDialog;
+  final controller = Get.find<ContactPageController>();
 
   @override
   Widget build(BuildContext context) {
+
+    ///Wrapped with UserListCore to get the List of all users
     return UserListCore(
       filter: Filter.notEqual("id", context.getCurrentUser!.id),
       errorBuilder: (context, error) {
@@ -43,7 +46,7 @@ class ContactPage extends StatelessWidget {
                 userItem: (user) {
                   return ListTile(
                     onTap: () {
-                      createChannel(context, user);
+                      controller.createChannel(context, user, isFromDialog);
                     },
                     leading: ClipRRect(
                       borderRadius: BorderRadius.circular(28.0),
@@ -76,24 +79,6 @@ class ContactPage extends StatelessWidget {
         );
       },
     );
-  }
-
-  Future<void> createChannel(BuildContext context, User user) async{
-    final core = StreamChatCore.of(context);
-    final channel = core.client.channel(
-      "messaging",
-      extraData: {
-        'members': [
-          core.currentUser!.id,
-          user.id,
-        ]});
-
-    await channel.watch();
-
-    if(isFromDialog){
-      Get.back();
-    }
-    Get.to(() => StreamChannel(channel: channel, child: const ChatScreen()));
   }
 
 }

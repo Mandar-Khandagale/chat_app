@@ -38,21 +38,21 @@ UserData userSacha = UserData(
   id: 'sacha',
   userName: 'Sacha Arbonel',
   userImg:
-      'https://pbs.twimg.com/profile_images/1199684106193375232/IxA9XLuN_400x400.jpg',
+  'https://safeimagekit.com/picture.png',
 );
 
 UserData userDeven = UserData(
   id: 'deven',
   userName: 'Deven Joshi',
   userImg:
-      'https://pbs.twimg.com/profile_images/1371411357459832832/vIy8TO9F_400x400.jpg',
+      'https://i.pinimg.com/474x/17/c0/7f/17c07f9dfbd51291d225f73f48e32ec7.jpg',
 );
 
 UserData userSahil = UserData(
   id: 'sahil',
   userName: 'Sahil Kumar',
   userImg:
-      'https://pbs.twimg.com/profile_images/1324766105127153664/q96TpY8I_400x400.jpg',
+      'https://pbs.twimg.com/profile_images/1554425711624077314/m8eFjwEg_400x400.jpg',
 );
 
 UserData userReuben = UserData(
@@ -66,5 +66,5 @@ UserData userNash = UserData(
   id: 'nash',
   userName: 'Nash Ramdial',
   userImg:
-      'https://pbs.twimg.com/profile_images/1436372495381172225/4wDDMuD8_400x400.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/b/be/Vrp-400x400.jpg',
 );
