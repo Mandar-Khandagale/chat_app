@@ -1,3 +1,5 @@
+import 'package:flutter_chat_app/controllers/sign_in_screen_controller.dart';
+import 'package:flutter_chat_app/controllers/sign_up_screen_controller.dart';
 import 'package:flutter_chat_app/controllers/contact_page_controller.dart';
 import 'package:flutter_chat_app/controllers/profile_screen_controller.dart';
 import 'package:flutter_chat_app/controllers/select_user_screen_controller.dart';
@@ -10,4 +12,6 @@ import 'package:get/get.dart';
   Get.put(SendMessageController());
   Get.put(ContactPageController());
   Get.put(SelectUserScreenController());
+  Get.put(SignUpController());
+  Get.put(SignInController());
 }

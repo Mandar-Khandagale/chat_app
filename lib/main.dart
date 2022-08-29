@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants.dart';
 import 'package:flutter_chat_app/di/di.dart';
 import 'package:flutter_chat_app/screens/imports.dart';
+import 'package:flutter_chat_app/screens/sign_in_screen.dart';
 import 'package:flutter_chat_app/utils/themes.dart';
 import 'package:get/get.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
           ),
         );
       },
-      home: UserSelectionScreen(),
+      home: SignInScreen(),
     );
   }
 }
